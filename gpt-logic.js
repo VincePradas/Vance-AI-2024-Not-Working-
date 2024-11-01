@@ -1,7 +1,7 @@
 const axios = require('axios')
 
 async function interactWithChatGPT(prompt) {
-    const apiKey = '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'; // Replace 'YOUR_API_KEY' with your actual API key
+    const removed = ''; // Replace 'YOUR_API_KEY' with your actual API key
   
     try {
       const response = await axios.post('https://api.openai.com/v1/chat/completions', {
@@ -11,7 +11,7 @@ async function interactWithChatGPT(prompt) {
       }, {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${apiKey}`
+          'Authorization': `Bearer ${removed}`
         }
       });
   

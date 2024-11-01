@@ -12,7 +12,14 @@ const PORT = process.env.PORT || 3000;
 app.use(bodyParser.json());
 
 const apiKeysPath = path.join(__dirname, 'json', 'api_config.json');
-const apiKeys = JSON.parse(fs.readFileSync(apiKeysPath));
+let apiKeys;
+try {
+  apiKeys = JSON.parse(fs.readFileSync(apiKeysPath, 'utf8'));
+} catch (error) {
+  console.error("Error reading API config:", error);
+  process.exit(1); // Exit the app if the config cannot be read
+}
+
 const openaiApiKey = apiKeys.openai;
 
 const configuration = new Configuration({

@@ -9,7 +9,7 @@ const data = {
 const dataName = data['name'];
 
 async function interactWithChatGPT(prompt) {
-    const apiKey = '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'; // Replace 'YOUR_API_KEY' with your actual API key
+    const removed = ''; // Replace 'YOUR_API_KEY' with your actual API key
 
     try {
         
@@ -17,7 +17,7 @@ async function interactWithChatGPT(prompt) {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${apiKey}`
+                'Authorization': `Bearer ${removed}`
             },
             body: JSON.stringify({
                 model: 'gpt-3.5-turbo-0613',

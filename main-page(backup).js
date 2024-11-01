@@ -115,7 +115,7 @@ function toggleSidebar() {
             image.style.display = 'none';
             image.style.transition = 'display ease 5s';
 
-            const openaiApiKey = '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';// API
+            const removed = '';// API
 
             async function sendMessage() {
                 console.log('Generating Response.')
@@ -126,7 +126,7 @@ function toggleSidebar() {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
-                            'Authorization': `Bearer ${openaiApiKey}`
+                            'Authorization': `Bearer ${removed}`
                         },
                         body: JSON.stringify({
                             model: 'davinci-002',

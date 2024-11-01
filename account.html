@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vance AI | Account</title>
+  <link rel="stylesheet" href="mainpage.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="shortcut icon" href="/assets/vance-logo.png" type="image/x-icon">
+  <style>
+
+  </style>
+</head>
+<body>
+    <div class="footer">
+        <footer><p style="font-size: 12px;">&copy Vince Warren B. Pradas</p></footer>
+      </div>
+<div class="sidebar" id="sidebar">
+  <h1 class="m-title">Menu</h1>
+  <button class="dark-mode"><i class="bi bi-circle-half"></i></i></button>
+  <div class="sidebar-links">
+    <a href="main.html" id="nav"><i class="bi bi-chat"></i> Chat</a>
+    <a href="#" class="nav"><i class="bi bi-person"></i> Account</a>
+    <a href="about.html" class="nav"><i class="bi bi-info-circle"></i> About</a>
+    <a href="settings.html" class="nav"><i class="bi bi-gear"></i> Settings</a>
+    <a href="#" id="logout"class="nav"><i class="bi bi-box-arrow-left"></i> Logout</a>
+  </div>
+</div>
+
+<div class="content" style="margin-left: 0px; padding: 20px;">
+  <h2 class="main-t">VanceAI v1</h2>
+  <p style="font-size: 13px; color: gray;">Web Based v1</p>
+  <span onclick="toggleSidebar()"><i class="bi bi-arrow-bar-right" id="bar"></i></span>
+
+  <div class="welcome">
+    <div class="center">
+        <div class="account-container">
+            <h6>Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="account-name" id="acc"></span></h6>
+            <h6>Username:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  class="account-username" id="acc">@</span></h6>
+            <h6>Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="account-email" id="acc"></span></h6>
+            <h6>Password:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="account-pass" id="acc">***</span></h6>
+            <div class="edit-details">
+            <button class="edit-button"><i class="bi bi-pen"></i> Edit</button>
+        </div>
+        </div>
+    </div>
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="main-page.js"></script>
+<script>
+    // Account details
+    let accName = document.querySelector('.account-name');
+    let accUN = document.querySelector('.account-username');
+    let accEmail = document.querySelector('.account-email');
+    let accPass = document.querySelector('.account-pass');
+    const account = localStorage.getItem('formData');
+    const accDetails = JSON.parse(account);
+
+    const AC = {
+        'name': accDetails.name,
+        'email': accDetails.email
+    }
+    accName.textContent = AC['name'];
+    accUN.textContent += AC['name'];
+    accEmail.textContent = AC['email'];
+
+    let darkMode = document.querySelector('.dark-mode');
+    let dark = false;
+
+    darkMode.addEventListener('click', function(event) {
+        event.preventDefault();
+        dark = !dark; // Toggle dark mode state
+
+        if (dark) {
+            document.querySelector('html').style.filter = 'invert(1)';
+            console.log('Dark mode activated');
+        } else {
+            // Return to normal mode
+            document.querySelector('html').style.filter = 'invert(0)';
+            console.log('Normal mode activated');
+        }
+    });
+
+    // Edit button click event listener
+    const editButton = document.querySelector('.edit-button');
+    editButton.addEventListener('click', () => {
+        let saveIcon = document.createElement('i');
+        saveIcon.classList.add('bi', 'bi-floppy');
+        editButton.textContent = 'Save '
+        editButton.appendChild(saveIcon);
+        editButton.addEventListener('click', ()=>{
+            accPass.textContent = "***"
+            location.reload();
+        })
+        // Enable content editing and add styles
+        enableEditing(accName);
+        enableEditing(accUN);
+        enableEditing(accEmail);
+        enableEditing(accPass);
+    });
+
+    // Function to enable editing and apply styles
+    function enableEditing(element) {
+        element.style.border = '1px solid gray';
+        element.style.padding = '3px';
+        element.style.borderRadius = '3px';
+        element.setAttribute('contenteditable', true);
+
+        // Add hover effect
+        element.addEventListener('mouseenter', () => {
+            element.classList.add('hovered');
+        });
+        element.addEventListener('mouseleave', () => {
+            element.classList.remove('hovered');
+        });
+
+        // Save changes on blur
+        element.addEventListener('blur', () => {
+            saveChanges();
+        });
+    }
+
+    // Function to save changes to localStorage
+    function saveChanges() {
+        const updatedName = accName.textContent.trim();
+        const updatedEmail = accEmail.textContent.trim();
+        const updatedPass = accPass.textContent.trim();
+
+        // Update account details in localStorage
+        const updatedDetails = {
+            ...accDetails,
+            name: updatedName,
+            email: updatedEmail,
+            password: updatedPass
+        };
+
+        localStorage.setItem('formData', JSON.stringify(updatedDetails));
+    }
+</script>
+</body>
+</html>

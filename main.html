@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vance AI</title>
+  <link rel="stylesheet" href="mainpage.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="shortcut icon" href="/assets/vance-logo.png" type="image/x-icon">
+  <style>
+
+  </style>
+</head>
+<body>
+  <div class="input-container">
+    <form>
+        <input class="prompt" type="text" placeholder="Message Vance...">
+        <button class="enter"><i class="bi bi-arrow-up-square-fill"></i></button>
+    </form>
+  </div>
+
+    
+<div class="sidebar" id="sidebar">
+  <h1 class="m-title">Menu</h1>
+  <button class="dark-mode"><i class="bi bi-circle-half"></i></i></button>
+  <div class="sidebar-links">
+    <a href="main.html" id="nav"><i class="bi bi-chat"></i> Chat</a>
+    <a href="account.html" class="nav"><i class="bi bi-person"></i> Account</a>
+    <a href="about.html" class="about"><i class="bi bi-info-circle"></i> About</a>
+    <a href="settings.html" class="nav"><i class="bi bi-gear"></i> Settings</a>
+    <a href="#" id="logout"class="nav"><i class="bi bi-box-arrow-left"></i> Logout</a>
+  </div>
+</div>
+
+<div class="content" style="margin-left: 0px; padding: 20px;">
+  <h2 class="main-t">VanceAI v1</h2>
+  <p style="font-size: 13px; color: gray;">Web Based v1</p>
+  <span onclick="toggleSidebar()"><i class="bi bi-arrow-bar-right" id="bar"></i></span>
+
+  <div class="welcome">
+    <div class="center">
+        <img src="/assets/vance-logo.png" alt="vance" class="vance-logo">
+        <h4>How can i help you gwapo?</h4> 
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="main-page.js"></script>
+<script>
+  let about = document.querySelector('.about');
+  about.addEventListener('click', ()=>{
+    let confirm = confirm('Going to another page will refresh the chat page which means all conversation data will be lost. Do you want to continue?')
+    if(confirm){
+      window.location.href;
+    }
+    else {
+
+    }
+  })
+</script>
+</body>
+</html>

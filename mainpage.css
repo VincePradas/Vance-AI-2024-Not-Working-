@@ -1,0 +1,273 @@
+    body {
+      position: relative;
+      overflow-x: hidden;
+    }
+    html {
+      touch-action: manipulation;
+      -ms-touch-action: manipulation;
+      zoom: 1 !important;
+      touch-action: none;
+      transition: all ease .5s;
+  }
+
+    .sidebar {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+        width: 250px;
+        position: fixed;
+        top: 0;
+        left: -250px;
+        background-color: rgb(245, 245, 245);
+        box-shadow: 0 1px 2px gray;
+        padding-top: 20px;
+        transition: left 0.3s ease;
+        font-family: Segoe UI;
+        z-index: 99;
+        overflow-x: hidden;
+      }
+  
+      .sidebar-links {
+        margin-top: auto;
+      }
+
+      .sidebar a {
+        padding: 10px;
+        padding-left: 20px;
+        text-decoration: none;
+        font-size: 16px;
+        color: black;
+        display: block;
+        font-family: Segoe UI;
+        margin-top:auto ;
+      }
+
+      .sidebar a.active {
+        background-color: #00000013;
+        font-family: Segoe UI;
+      }
+      .sidebar a:hover{
+        background-color: #00000013;
+        color: blue;
+        font-family: Segoe UI;   
+        transition: color ease .2s;
+      }
+
+      #bar{
+        position: relative;
+        top: 25em;
+        border: none;
+        box-shadow: 0 0 2px rgba(0, 0, 0, 0.803);
+        padding: 3px;
+        border-radius: 5px;
+        position: fixed;
+        z-index: 1;
+      }
+      
+      .m-title {
+        font-size: 22px;
+        padding-left: 15px;
+        font-weight: bold;
+      }
+
+      .main-t {
+        font-size: 21px;
+        letter-spacing: -1px;
+      }
+      .enter {
+        border: none;
+        font-size: 97px;
+      }
+      
+      form {
+        display: flex;
+        align-items: center;
+      }
+
+      input {
+        height: 50px;
+        width: 40em;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 0 3px gray;
+        margin-right: 50px;
+      }
+
+      input::placeholder {
+        padding-left: 20px;
+      }
+
+      .input-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #fcfcfcc0;
+        padding: 10px 20px;
+        box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1);
+        z-index: 1;
+      }
+      
+      .input-container form {
+        display: flex;
+        align-items: center;
+      }
+      
+      .input-container input {
+        height: 50px;
+        width: 45em;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 0 3px gray;
+        margin-right: 10px;
+        padding: 0 15px;
+      }
+      
+      .input-container .enter {
+        border: none;
+        background-color: white;
+        font-size: 27px;
+      }
+
+
+    .vance-logo {
+        height: 5em;
+        width: 5em;
+        text-align: center;
+        border: none;
+        box-shadow: 0 0 2px gray;
+        border-radius: 100%;
+        margin-bottom: 25px;
+    }
+
+    .center {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 1;
+    }
+    footer {
+        position: relative;
+        display: flex;
+        text-align: center;
+        bottom: 0;
+
+    }
+    #pfp-container {
+      display: flex;
+      align-items: center;
+    }
+    #ai-pfp-container {
+      display: flex;
+      align-items: center;
+      position: relative;
+      right: 1em;
+    }
+
+    .about-p {
+      width: 50em;
+      text-align: justify;
+    }
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #fcfcfcc0;
+      padding: 10px 20px;
+      z-index: 1;
+    }
+
+    .dark-mode {
+      width: 50px;
+      border: none;
+      border-radius:10px;
+      padding: 5px;
+      margin-left: 14px;
+      box-shadow: 0 0 2px gray;
+      transition: background-color ease .5s;
+    }
+    .dark-mode:hover {
+      background-color: gold;
+      transition: background-color ease .5s;
+    }
+
+    .account-container {
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 0 5px gray;
+      height: 100%;
+      width: 50em;
+      padding: 5px;
+    }
+    .account-container h6{
+      padding: 2em;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 0 2px gray;
+      margin: 5px;
+      margin-bottom: 20px;
+    }
+    .edit-button {
+      width: 200px;
+      margin: 2em;
+      border: none;
+      border-radius: 10px;
+      padding: 5px;
+      background-color: black;
+      color: white;
+      font-weight: bold;
+      transition: all ease .4s;
+    }
+    .edit-button:hover{
+      background-color: gold;
+      color: black;
+      transition: all ease .3s;
+      box-shadow: 0 0 2px black;
+    }
+    .edit-details{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    @media screen and (max-width: 768px) {
+      .input-container input {
+          height: 50px;
+          width: 45em;
+          max-width: 15em;
+          border: none;
+          border-radius: 10px;
+          box-shadow: 0 0 3px gray;
+          margin-right: 10px;
+          padding: 0 15px;
+        }
+        html {
+          touch-action: manipulation;
+          -ms-touch-action: manipulation;
+          zoom: 1 !important;
+          touch-action: none;
+      }
+      #resDiv {
+        position: absolute;
+      }
+      html {
+      overflow-y: scroll; 
+      max-height: 100vh;
+      }
+      .about-p {
+        width: 20em;
+        text-align: justify;
+        margin-bottom: 20px;
+      }
+      .account-container {
+        width: 350px;
+      }
+  }

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Interface</title>
+    <style>
+        /* Your CSS styles here */
+    </style>
+</head>
+<body>
+    <div id="sidebar">Sidebar Content</div>
+    <div class="content">
+        <button id="bar">Toggle Sidebar</button>
+        <input type="text" class="prompt" placeholder="Enter your message...">
+        <button class="enter">Send</button>
+        <button id="logout">Logout</button>
+        <button class="dark-mode">Toggle Dark Mode</button>
+        <button class="about">About</button>
+        <div id="output"></div>
+        <img src="/assets/welcome.png" class="welcome" alt="Welcome Image">
+    </div>
+
+    <script>
+        async function interactWithChatGPT(prompt) {
+            const apiKey = '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'; // Replace 'YOUR_API_KEY' with your actual API key
+
+            try {
+                const response = await fetch('https://api.openai.com/v1/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${apiKey}`
+                    },
+                    body: JSON.stringify({
+                        model: 'gpt-3.5-turbo',
+                        messages: [{ role: 'user', content: prompt }],
+                        temperature: 0.7
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch response from the API');
+                }
+
+                const data = await response.json();
+                return data.choices[0].message.content.trim();
+            } catch (error) {
+                console.error('Error interacting with the API:', error);
+                return null;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function(event) {
+            let outBtn = document.getElementById('logout');
+            outBtn.addEventListener('click', (event)=>{
+                event.preventDefault();
+                let confirmOut = confirm('Do you want to logout?');
+                if(confirmOut){
+                    window.history.replaceState(null, null, 'index.html');
+                    window.location.href = 'index.html';
+                }
+            });
+
+            let promptBtn = document.querySelector('.enter');
+            promptBtn.addEventListener('click', async function(event) {
+                event.preventDefault();
+                let input = document.querySelector('.prompt').value;
+                let bubble = document.createElement('h3');
+                let textNode = document.createTextNode(input);
+                bubble.appendChild(textNode);
+
+                try {
+                    const assistantResponse = await interactWithChatGPT(input);
+                    let aiBubble = document.createElement('h3');
+                    let aiTextNode = document.createTextNode(assistantResponse);
+                    aiBubble.appendChild(aiTextNode);
+                    document.querySelector('#output').appendChild(aiBubble);
+                } catch (error) {
+                    console.error(error);
+                    document.getElementById('output').innerText = "An error occurred while processing your request. Please try again later.";
+                }
+                document.querySelector('.prompt').value = "";
+            });
+
+            let darkMode = document.querySelector('.dark-mode');
+            let dark = false;
+            
+            darkMode.addEventListener('click', function(event) {
+                event.preventDefault();
+                dark = !dark; // Toggle dark mode state
+            
+                if (dark) {
+                    document.querySelector('html').style.filter = 'invert(1)';
+                    console.log('Dark mode activated');
+                } else {
+                    // Return to normal mode
+                    document.querySelector('html').style.filter = 'invert(0)';
+                    console.log('Normal mode activated');
+                }
+            });
+
+            let aboutAlert = document.querySelector('.about');
+            aboutAlert.addEventListener('click', (event)=>{
+                event.preventDefault();
+                let ok = confirm('By proceeding, the entire conversation will be deleted. Do you want to continue?')
+                if(ok){
+                    window.location.href = 'about.html';
+                }
+                else {
+                }
+            })
+        });
+    </script>
+</body>
+</html>
